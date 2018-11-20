@@ -1,0 +1,4 @@
+# This tells the terminal to use bash as the interpreter
+#!/bin/bash
+
+make -f HelloWorld.mk	
