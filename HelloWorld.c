@@ -1,29 +1,11 @@
-#include <stdio.h>
-#include "mpi.h"
-
-int main (int argc, char *argv[])
+#include<stdio.h>
+#include<omp.h>
+int main(int argc, char ** argv)
 {
-	int rank, number;
-	number =0;
-	
-	/* starts MPI */
-	MPI_Init (&argc, &argv);
-	
-	/* get current process rank */
-	MPI_Comm_rank (MPI_COMM_WORLD, &rank);
-	if (rank == 0) 
-	{
-		number = 123;
-		MPI_Send(&number, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
-	}
-	else if (rank == 1) 
-	{
-		printf("Number = %d\n", number);
-		MPI_Recv(&number, 1, MPI_INT, 0, 0, MPI_COMM_WORLD,
-		MPI_STATUS_IGNORE);
-		printf("Process 1 received data from process 0, number = %d\n", number);
-	}
-	
-	MPI_Finalize(); /* ends MPI */
-	return 0;
+#pragma omp parallel
+{
+int thread_id = omp_get_thread_num();
+int thread_count = omp_get_num_threads();
+printf("Hello from thread number: %d out of: %d\n",
+thread_id, thread_count);
 }
