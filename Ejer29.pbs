@@ -1,4 +1,6 @@
 # This tells the terminal to use bash as the interpreter
 #!/bin/bash
 
+#PBS -l nodes=1:ppn=10
+
 make -f HelloWorld.mk	
