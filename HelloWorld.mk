@@ -1,6 +1,6 @@
 #Makefile Ejercicio 28
 
-All: 12.3.c
+All: HelloWorld.c
 	mpicc HelloWorld.c -o HelloWorld
 	mpirun -np 4 ./HelloWorld
 
