@@ -3,12 +3,23 @@
 
 
 int main(int argc, char ** argv)
-{
-	#pragma omp parallel
+{	
+	double delta = 0.05;
+	double L = 4.0;
+	double N = (L/delta) + 1;
+	double* x = malloc(N*sizeof(double));
+	double* u = malloc(N*sizeod(double));
+	
+	
+	#pragma omp parallel for
 	{
-	int thread_id = omp_get_thread_num();
-	int thread_count = omp_get_num_threads();
-	printf("Hello from thread number: %d out of: %d\n",
-	thread_id, thread_count);
+	int i;
+	for(i=0; i<N i++)
+	{
+		x[i] = i*delta;
+		if (X[i] < 2.0)
+		{
+			u[i] = 1.0;
+		}
+		
 	}
-}
